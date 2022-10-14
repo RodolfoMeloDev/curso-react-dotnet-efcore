@@ -7,24 +7,22 @@ export default function Atividade(props) {
 
   function prioridadeLabel(param){
     switch(param){
-      case '1':
-        return 'Baixa';
-      case '2':
-        return 'Normal';
-      case '3':
-        return 'Alta';
+      case 'Baixa':
+      case 'Normal':
+      case 'Alta':
+        return param;
       default:
-          return '';
+          return 'Não Definido';
     }
   }
 
   function prioridadeIcon(param){
     switch(param){
-      case '1':
+      case 'Baixa':
         return faSmile;
-      case '2':
+      case 'Normal':
         return faFaceMeh;
-      case '3':
+      case 'Alta':
         return faFrown;
       default:
           return '';
@@ -33,11 +31,11 @@ export default function Atividade(props) {
 
   function prioridadeColor(param){
     switch(param){
-      case '1':
+      case 'Baixa':
         return 'success';
-      case '2':
+      case 'Normal':
         return 'dark';
-      case '3':
+      case 'Alta':
         return 'warning';
       default:
           return '';
@@ -55,7 +53,7 @@ export default function Atividade(props) {
           <h6>
             Prioridade:
             <span className={"ms-1 text-"+prioridadeColor(props.atividade.prioridade)}>
-              <FontAwesomeIcon className="me-1" icon={prioridadeIcon(props.atividade.prioridade)} />
+              {props.atividade.prioridade === 0 || props.atividade.prioridade === "NaoDefinido" ? "" : <FontAwesomeIcon className="me-1" icon={prioridadeIcon(props.atividade.prioridade)} />}
               {prioridadeLabel(props.atividade.prioridade)}
             </span>
           </h6>
@@ -72,7 +70,7 @@ export default function Atividade(props) {
             Editar
           </button>
           <button className="btn btn-sm btn-danger" 
-            onClick={() => props.deletarAtividade(props.atividade.id)}
+            onClick={() => props.handleConfirmModal(props.atividade.id)}
           >
             <FontAwesomeIcon className="me-2" icon={faTrash} 
           />

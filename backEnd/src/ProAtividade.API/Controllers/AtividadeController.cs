@@ -25,25 +25,25 @@ namespace ProAtividade.API.Controllers
         }
 
         [HttpGet]
-        [Route("id")]
+        [Route("{id}")]
         public Atividade Get(int id)
         {
             return _context.Atividades.FirstOrDefault(x => x.Id.Equals(id));
         }
 
         [HttpPost]
-        public IEnumerable<Atividade> Post(Atividade atividade)
+        public Atividade Post(Atividade atividade)
         {
             _context.Atividades.Add(atividade);
 
             if (_context.SaveChanges() > 0)
-                return _context.Atividades;
+                return _context.Atividades.FirstOrDefault(x => x.Id.Equals(atividade.Id));
 
             throw new Exception("Você não conseguiu adicionar uma tividade");
         }
 
         [HttpPut]
-        [Route("id")]
+        [Route("{id}")]
         public Atividade Put(int id, Atividade atividade)
         {
             if(atividade.Id != id)
@@ -58,7 +58,7 @@ namespace ProAtividade.API.Controllers
         }
 
         [HttpDelete]
-        [Route("id")]
+        [Route("{id}")]
         public bool Delete(int id)
         {
             var atividade = _context.Atividades.FirstOrDefault(ativ => ativ.Id == id);

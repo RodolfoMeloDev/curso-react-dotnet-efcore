@@ -54,8 +54,7 @@ export default function AtividadeForm(props) {
   }
 
   return (
-    <>
-      <h1>Atidades{atividade.id !==0 ? ': ' + atividade.id : null}</h1>
+    <>      
       <form className="row g-3" onSubmit={handleSubmit}>
           <div className="col-md-6">
             <label htmlFor="titulo"className="form-lable">Título</label>
@@ -79,10 +78,10 @@ export default function AtividadeForm(props) {
               onChange={inputTextHandler}
               value={atividade.prioridade}
             >
-              <option defaultValue="0">Selecionar...</option>
-              <option value="1">Baixa</option>
-              <option value="2">Normal</option>
-              <option value="3">Alta</option>
+              <option value="NaoDefinido">Selecionar...</option>
+              <option value="Baixa">Baixa</option>
+              <option value="Normal">Normal</option>
+              <option value="Alta">Alta</option>
             </select>
           </div>
 
@@ -104,11 +103,11 @@ export default function AtividadeForm(props) {
             {
               atividade.id === 0 ?
               <button 
-                className="btn btn-secondary" 
+                className="btn btn-success" 
                 type='submit'
               >
                 <FontAwesomeIcon  className='me-2' icon={faPlus} />
-                Atividade
+                Salvar
               </button>
               :
               <>
