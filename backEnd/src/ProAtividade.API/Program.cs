@@ -1,7 +1,10 @@
-using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using ProAtividade.API.Data;
+using ProAtividade.Data.Context;
+using ProAtividade.Data.Repositories;
+using ProAtividade.Domain.Interfaces.Repositories;
+using ProAtividade.Domain.Interfaces.Services;
+using ProAtividade.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(
     options => options.UseSqlite("Data Source=ProAtividade.db")
 );
+
+builder.Services.AddScoped<IBaseRepo, BaseRepo>();
+builder.Services.AddScoped<IAtividadeRepo, AtividadeRepo>();
+builder.Services.AddScoped<IAtividadeService, AtividadeService>();
  
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

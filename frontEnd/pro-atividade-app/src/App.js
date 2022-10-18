@@ -91,7 +91,7 @@ function App() {
   return (
     <>      
       <div className="d-flex justify-content-between align-items-end mt-2 pb-3 border-bottom border-1">
-        <h1 className='m-0 p-0'>Atidades</h1>
+        <h1 className='m-0 p-0'>Atividades</h1>
         <Button variant="outline-secondary" onClick={novaAtividade}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
@@ -106,7 +106,7 @@ function App() {
       <Modal show={showAtividadeModal} onHide={handleAtividadeModal}>
         <Modal.Header closeButton>
           <Modal.Title>            
-            Atidade{atividade.id !==0 ? ': ' + atividade.id : null}
+            Atividade{atividade.id !==0 ? ': ' + atividade.id : null}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -131,7 +131,7 @@ function App() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Tem certeza que deseja exlcuir a Atidade {atividade.id}
+          Tem certeza que deseja exlcuir a Atividade {atividade.id}
         </Modal.Body>
         <Modal.Footer className='d-flex justify-content-between'>
           <button 
