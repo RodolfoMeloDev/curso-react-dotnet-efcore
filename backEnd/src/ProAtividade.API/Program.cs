@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ProAtividade.Data.Context;
@@ -11,14 +12,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlite("Data Source=ProAtividade.db")
+    options => options.UseSqlite(builder.Configuration.GetConnectionString("Default"))
 );
 
 builder.Services.AddScoped<IBaseRepo, BaseRepo>();
 builder.Services.AddScoped<IAtividadeRepo, AtividadeRepo>();
 builder.Services.AddScoped<IAtividadeService, AtividadeService>();
- 
-builder.Services.AddControllers();
+
+builder.Services.AddControllers()
+                .AddJsonOptions(
+                    options =>
+                    {
+                        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    }
+                );
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -33,8 +42,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProAtividade.API v1"));
 }
 
 app.UseHttpsRedirection();

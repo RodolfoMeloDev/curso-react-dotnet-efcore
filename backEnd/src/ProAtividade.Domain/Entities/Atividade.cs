@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ProAtividade.Domain.Entities
 {
@@ -14,7 +10,6 @@ namespace ProAtividade.Domain.Entities
         public DateTime DataCriacao { get; set; }
         public DateTime? DataConclusao { get; set; }
 
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Prioridade Prioridade { get; set; }
 
         public Atividade()
@@ -30,7 +25,8 @@ namespace ProAtividade.Domain.Entities
             Descricao = descricao;
         }
 
-        public void Concluir(){
+        public void Concluir()
+        {
             if (DataConclusao == null)
                 DataConclusao = DateTime.Now;
             else
