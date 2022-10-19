@@ -65,8 +65,7 @@ export default function AtividadeItem(props) {
           <button className="btn btn-sm btn-primary me-2"
             onClick={() => props.pegarAtividade(props.atividade.id)}
           >
-            <FontAwesomeIcon className="me-2" icon={faPen} 
-          />
+            <FontAwesomeIcon className="me-2" icon={faPen} />
             Editar
           </button>
           <button className="btn btn-sm btn-danger" 
