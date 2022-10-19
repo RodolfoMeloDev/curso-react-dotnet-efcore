@@ -3,7 +3,7 @@ import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 import { faSmile, faFaceMeh, faFrown } from '@fortawesome/free-regular-svg-icons'
 import React from 'react'
 
-export default function Atividade(props) {
+export default function AtividadeItem(props) {
 
   function prioridadeLabel(param){
     switch(param){

@@ -111,12 +111,12 @@ export default function AtividadeForm(props) {
               </button>
               :
               <>
-                <button   className="btn btn-secondary me-2" type="submit">
+                <button   className="btn btn-sm btn-secondary me-2" type="submit">
                   <FontAwesomeIcon  className='me-2' icon={faPlus} />
                   Salvar
                 </button>
                 <button 
-                  className="btn btn-warning" 
+                  className="btn btn-sm btn-warning" 
                   onClick={handlerCancelar}
                 >
                   <FontAwesomeIcon  className='me-2' icon={faPlus} />
