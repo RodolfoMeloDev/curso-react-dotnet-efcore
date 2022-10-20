@@ -12,8 +12,8 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link activeClassName='active' as={NavLink} to='/cliente/lista'>Clientes</Nav.Link>
-            <Nav.Link activeClassName='active' as={NavLink} to='/atividade/lista'>Atividades</Nav.Link>
+            <Nav.Link className={(navData) => navData.isActive ? 'Active' : '' } as={NavLink} to='/cliente/lista'>Clientes</Nav.Link>
+            <Nav.Link className={(navData) => navData.isActive ? 'Active' : '' } as={NavLink} to='/atividade/lista'>Atividades</Nav.Link>
           </Nav>
           <Nav>
             <NavDropdown align='end' title="Rodolfo" id="basic-nav-dropdown">

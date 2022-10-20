@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
 import TitlePage from '../../components/TitlePage';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTimes, faUserPen } from '@fortawesome/free-solid-svg-icons'
 import { InputGroup, Form, Button} from 'react-bootstrap'
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { faPlus, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 const clientes = [
@@ -28,7 +27,7 @@ const clientes = [
     nome: 'Google',
     responsavel: 'Luke',
     contato: '66554433',
-    situacao: 'Em Ánalise'
+    situacao: 'Em Ýnalise'
   },
   {
     id: 4,
@@ -47,7 +46,7 @@ const clientes = [
 ]
 
 export default function ClienteLista() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [termoBusca, setTermoBusca] = useState('');
 
@@ -83,7 +82,7 @@ export default function ClienteLista() {
   }
 
   const novoCliente = () => {
-    history.push('/cliente/detalhe');
+    navigate('/cliente/detalhe');
   }
 
   return (
@@ -127,7 +126,7 @@ export default function ClienteLista() {
                   <div>
                     <button 
                       className="btn btn-sm btn-outline-primary me-2" 
-                      onClick={() => history.push(`/cliente/detalhe/${cliente.id}`) }
+                      onClick={() => navigate(`/cliente/detalhe/${cliente.id}`) }
                     >
                       <FontAwesomeIcon className="me-2" icon={faUserPen} />
                       Editar

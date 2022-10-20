@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProAtividade.Data.Context;
 using ProAtividade.Domain.Entities;

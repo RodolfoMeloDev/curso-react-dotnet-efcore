@@ -1,5 +1,9 @@
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProAtividade.Data.Context;
 using ProAtividade.Data.Repositories;

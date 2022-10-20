@@ -3,10 +3,10 @@ import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function ClienteForm() {
-  const history = useHistory();
+  const navigate = useNavigate();
   let { id } = useParams();
 
   return (
@@ -14,7 +14,7 @@ export default function ClienteForm() {
         <TitlePage title={(id === undefined ? 'Novo Cliente ' : 'Cliente: ' + id)}>
             <Button 
               variant='outline-secondary' 
-              onClick={() => history.goBack()}
+              onClick={() => navigate('/cliente/lista')}
             >
               <FontAwesomeIcon className='me-2' icon={faLeftLong} />
               Voltar

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProAtividade.Domain.Entities;
 using ProAtividade.Domain.Interfaces.Services;

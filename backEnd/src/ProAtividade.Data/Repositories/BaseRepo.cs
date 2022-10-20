@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using ProAtividade.Data.Context;
 using ProAtividade.Domain.Interfaces.Repositories;
 
