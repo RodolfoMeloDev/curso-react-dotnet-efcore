@@ -1,10 +1,14 @@
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-function Menu() {
+const Menu: React.FC = () => {
+  const getActiveRoute = useLocation().pathname ? 'Active' : '';
+
+
   return (
     <Navbar bg="dark" expand="lg" variant='dark'>
       <Container>
@@ -12,8 +16,8 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className={(navData) => navData.isActive ? 'Active' : '' } as={NavLink} to='/cliente/lista'>Clientes</Nav.Link>
-            <Nav.Link className={(navData) => navData.isActive ? 'Active' : '' } as={NavLink} to='/atividade/lista'>Atividades</Nav.Link>
+            <Nav.Link className={getActiveRoute} as={NavLink} to='/cliente'>Clientes</Nav.Link>
+            <Nav.Link className={getActiveRoute} as={NavLink} to='/atividade'>Atividades</Nav.Link>
           </Nav>
           <Nav>
             <NavDropdown align='end' title="Rodolfo" id="basic-nav-dropdown">

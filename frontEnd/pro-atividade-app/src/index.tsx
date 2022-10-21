@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,13 +8,13 @@ import Menu from './components/Menu';
 import "bootswatch/dist/sandstone/bootstrap.min.css";
 import { BrowserRouter as Router } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <Router>
     <Menu />
     <div className="container">
       <App />
     </div>
-  </Router>
+  </Router>,
+  document.getElementById('root')
 );
 

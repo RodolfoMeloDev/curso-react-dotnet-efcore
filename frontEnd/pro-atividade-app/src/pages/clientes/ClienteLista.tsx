@@ -3,7 +3,7 @@ import TitlePage from '../../components/TitlePage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTimes, faUserPen } from '@fortawesome/free-solid-svg-icons'
 import { InputGroup, Form, Button} from 'react-bootstrap'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { faPlus, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -45,14 +45,14 @@ const clientes = [
   }
 ]
 
-export default function ClienteLista() {
+const ClienteLista: React.FC = () => {
   const navigate = useNavigate();
 
   const [termoBusca, setTermoBusca] = useState('');
 
   const [sortIcon, setSortIcon] = useState(faSort);
   
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTermoBusca(e.target.value);
   }
 
@@ -144,3 +144,5 @@ export default function ClienteLista() {
     </>
   )
 }
+
+export default ClienteLista;

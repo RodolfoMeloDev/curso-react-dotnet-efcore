@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
 
-export default function ClienteForm() {
+const ClienteForm: React.FC = () => {
   const navigate = useNavigate();
   let { id } = useParams();
 
@@ -23,3 +24,5 @@ export default function ClienteForm() {
     </>
   )
 }
+
+export default ClienteForm;
