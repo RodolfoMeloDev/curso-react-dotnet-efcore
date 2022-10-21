@@ -8,25 +8,34 @@ import TitlePage from '../../components/TitlePage'
 import api from '../../api/atividade';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { IAtividade, Prioridade } from '../../model/atividade';
 
-export default function Atividade() {
+const atividadeInicial: IAtividade = {
+  id: 0,
+  titulo: '',
+  prioridade: Prioridade.NaoDefinido,
+  descricao: ''
+}
+
+const Atividade = () => {
   const [smShowConfirmModal, setSmShowConfirmModal] = useState(false);
   const [showAtividadeModal, setShowAtividadeModal] = useState(false);
-  const [atividades, setAtividades] = useState([])
-  const [atividade, setAtividade] = useState({id:0});
+
+  const [atividades, setAtividades] = useState<IAtividade[]>([])
+  const [atividade, setAtividade] = useState<IAtividade>(atividadeInicial);
   
   const handleAtividadeModal = () => {
     setShowAtividadeModal(!showAtividadeModal);
   }
 
-  const handleConfirmModal = (id) => {
+  const handleConfirmModal = (id: number) => {
     if (id !== 0 && id !== undefined)
     {
       const atividade = atividades.filter( ativ => ativ.id === id);
       setAtividade(atividade[0]);
     }else{
-      setAtividade({id : 0})
+      setAtividade(atividadeInicial)
     }
 
     setSmShowConfirmModal(!smShowConfirmModal);
@@ -38,7 +47,7 @@ export default function Atividade() {
   };
 
   const novaAtividade = () => {
-    setAtividade({ id : 0 });
+    setAtividade(atividadeInicial);
     handleAtividadeModal();
   }
 
@@ -51,7 +60,7 @@ export default function Atividade() {
     getAtividades();
   }, [])
 
-  const addAtividade = async (ativ) => {
+  const addAtividade = async (ativ: IAtividade) => {
     const response = await api.post('atividade', ativ);
 
     setAtividades([...atividades, response.data])
@@ -59,21 +68,21 @@ export default function Atividade() {
   }
   
   const cancelarAtividade = () => {
-    setAtividade({id: 0});
+    setAtividade(atividadeInicial);
     handleAtividadeModal();
   }
 
-  const atualizarAtividade = async (ativ) => {
+  const atualizarAtividade = async (ativ: IAtividade) => {
     const response = await api.put(`atividade/${ativ.id}`, ativ);
     const { id } = response.data;
 
     setAtividades(atividades.map( item => item.id === id ? response.data : item ));
 
-    setAtividade({id: 0});
+    setAtividade(atividadeInicial);
     handleAtividadeModal();
   }
 
-  const deletarAtividade = async (id) => {
+  const deletarAtividade = async (id: number) => {
     handleConfirmModal(0);
     if (await api.delete(`atividade/${id}`))
     {
@@ -82,7 +91,7 @@ export default function Atividade() {
     }
   }
 
-  const pegarAtividade = (id) => {
+  const pegarAtividade = (id: number) => {
     const atividade = atividades.filter( ativ => ativ.id === id);
     setAtividade(atividade[0]);
     handleAtividadeModal();
@@ -116,7 +125,6 @@ export default function Atividade() {
             cancelarAtividade={cancelarAtividade}
             atualizarAtividade={atualizarAtividade}
             atividadeSelecionada={atividade}
-            atividades={atividades}
           />
         </Modal.Body>
       </Modal>
@@ -124,7 +132,7 @@ export default function Atividade() {
       <Modal 
         size='sm'
         show={smShowConfirmModal} 
-        onHide={handleConfirmModal}
+        hide={handleConfirmModal}
       >
         <Modal.Header closeButton>
           <Modal.Title>            
@@ -154,3 +162,4 @@ export default function Atividade() {
     </>
   );
 }
+export default Atividade;

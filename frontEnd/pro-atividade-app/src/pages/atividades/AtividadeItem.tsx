@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPen, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPen, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faSmile, faFaceMeh, faFrown } from '@fortawesome/free-regular-svg-icons'
 import { AtividadeItemProps } from '../../model/atividadesProps';
 import { Prioridade } from '../../model/atividade';

@@ -7,9 +7,9 @@ export interface AtividadeItemProps{
   }
 
 export interface AtividadesListaProps {
-    atividades: IAtividade[],
-    handleConfirmModal: () => void,
-    pegarAtividade: () => void
+    atividades: IAtividade[];
+    pegarAtividade: (id: number) => void;
+    handleConfirmModal: (id: number) => void;
   }
 
 export interface AtividadeFormProps{
