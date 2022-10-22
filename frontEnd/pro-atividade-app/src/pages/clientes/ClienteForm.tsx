@@ -1,10 +1,9 @@
 import TitlePage from '../../components/TitlePage'
 import { Button } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
-import React from 'react';
 
 const ClienteForm: React.FC = () => {
   const navigate = useNavigate();
